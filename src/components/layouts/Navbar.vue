@@ -1,28 +1,34 @@
 <template> 
 
-<nav class="nav-container"
+<nav class="navContainer"
  ref="NavBarRef">
-  <div class="nav-inner">
+
+  <div class="innerNav">
 
   <div class="flexCenter justify-between space-x-6">
 
-    <RouterLink class="brand" 
-     :to="{ name: 'home' }">
+   <div class="flexCenter space-x-1 cursor-pointer"
+     @click="$router.push({ name: 'home' })">
+    <img src="../../../public/favi.png"
+     class="h-8 w-8 object-cover">
+
+    <h3 class="brand">
       Ink UI
-    </RouterLink>
+    </h3>
+    </div>
 
   <i class="fas fa-bars lg:hidden"
     @click="toggleNav"></i>
   </div>
 
-  <div class="nav-content" v-if="showNav">
+  <div class="navContent" v-if="showNav">
 
-    <div class="nav-content-route"
-      v-if="showNav">
+    <div class="routerContainer"
+     v-if="showNav">
 
      <RouterLink v-for="route in routes" 
+      class="links text-[#696c6d] text-base" 
       :to="{ name: route.path }"
-      class="links" 
       @click="toggleNav">
         {{ route.name }}
       </RouterLink> 
@@ -31,7 +37,7 @@
    <div v-if="useAuth.user.id"
     class="text-end">
      <button 
-     class="logoutBtn -brown"  
+     class="signOutBtn"  
      @click="userSignOut">
        Logout {{ useAuth.user.email }}
     </button>

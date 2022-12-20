@@ -13,7 +13,8 @@
      :value="modelValue"
      @input="event => $emit('update:modelValue', 
      event.target.value)" v-focus
-     class="textarea">
+     class="resize-none h-32 w-full p-2 
+     focus:outline-none overflow-y-scroll">
 
     </textarea>
 

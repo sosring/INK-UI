@@ -4,8 +4,8 @@
  overflow-scroll bg-gray-100">
   <Navbar />
 
- <div class="mt-16
-  max-w-6xl p-2 mx-auto">
+ <div class="mt-16 overflow-y-scroll 
+  scroll-smooth max-w-6xl p-2 mx-auto">
 
   <RouterView />
  </div>
@@ -23,7 +23,13 @@
 </script>
 
 <style>
-  #app {
-    --webkit-tap-hightlight-color: transparent;
-  }
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+  height: -moz-available;          
+  height: -webkit-fill-available;  
+  height: fill-available;
+}
+  
 </style>

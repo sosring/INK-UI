@@ -21,7 +21,6 @@ export const useAuthStore = defineStore('AuthStore', {
           this.user.id = user.uid
           this.user.email = user.email
           this.router.push({ name: 'home' })
-
           useNotes.init()
         } else {
           console.log('user logout')
@@ -60,12 +59,12 @@ export const useAuthStore = defineStore('AuthStore', {
     },
 
     Demo () {
-     signInAnonymously(auth)
-      .then(() => {
-     })
-      .catch((err) => {
-        console.log(err.message)
-     });
+       signInAnonymously(auth)
+       .then(() => {
+       })
+       .catch((err) => {
+         console.log(err.message)
+       });
     },
 
     signInWithGoogle () {

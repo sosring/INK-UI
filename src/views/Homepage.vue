@@ -6,7 +6,9 @@
 
     <button 
      @click="addNote"
-     class="slotBtn">
+     class="py-3 px-6 rounded-md 
+     bg-indigo-300 text-gray-600 
+     shadow-lg focus:outline-none">
       Add
     </button>
  </template>

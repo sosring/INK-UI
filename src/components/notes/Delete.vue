@@ -1,7 +1,7 @@
 <template>
 
   <div class="h-full w-full bg-[#00000056]
-   backdrop-blur-sm absolute top-0 left-0
+   md:backdrop-blur-sm absolute top-0 left-0
    flexCenter justify-center z-10"
    ref="modalRef">
     

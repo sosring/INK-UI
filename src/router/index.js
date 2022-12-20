@@ -12,15 +12,15 @@ const routes = [
       component: Homepage
     },
     {
+      path: '/auth',
+      name: 'auth',
+      component: Auth,
+    },
+    {
       path: '/edit/:id',
       name: 'edit',
       component: Editnote,
       props: true
-    },
-    {
-      path: '/auth',
-      name: 'auth',
-      component: Auth,
     },
     {
       path: '/about',

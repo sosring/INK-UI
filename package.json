@@ -6,10 +6,11 @@
     "dev": "vite --open",
     "build": "vite build",
     "preview": "vite preview --open",
-    "style": "tailwindcss src/style.css -o style.css"
+    "style": "tailwindcss src/style.css -o style.css",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "@vueuse/core": "^9.6.0",
+    "@vueuse/core": "^9.8.2",
     "firebase": "^9.15.0",
     "pinia": "^2.0.28",
     "tailwindcss": "^3.2.4",
