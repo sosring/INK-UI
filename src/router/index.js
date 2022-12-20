@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import Homepage from '../views/Homepage.vue'
+import Aboutpage from '../views/Aboutpage.vue'
 import Editnote from '../views/Editnote.vue'
 import Auth from '../views/Auth.vue'
 
@@ -20,6 +21,11 @@ const routes = [
       path: '/auth',
       name: 'auth',
       component: Auth,
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: Aboutpage
     }
   ]
 

@@ -20,10 +20,11 @@
     <div class="nav-content-route"
       v-if="showNav">
 
-     <RouterLink :to="{ name: 'home' }"
+     <RouterLink v-for="route in routes" 
+      :to="{ name: route.path }"
       class="links" 
       @click="toggleNav">
-        Home
+        {{ route.name }}
       </RouterLink> 
     </div>
 
@@ -75,6 +76,11 @@
    useAuth.signOutUser()
    toggleNav()
  }
+
+ const routes = [
+   { name: 'Home', path: 'home' },
+   { name: 'About', path: 'about' }
+ ]
 
 </script>
 

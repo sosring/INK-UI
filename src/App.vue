@@ -22,5 +22,8 @@
   onMounted(() => useAuth.init())
 </script>
 
-<style scoped>
+<style>
+  #app {
+    --webkit-tap-hightlight-color: transparent;
+  }
 </style>
