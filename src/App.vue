@@ -1,13 +1,21 @@
 <template>
 
-<div class="h-screen w-screen
- overflow-scroll bg-gray-100">
+<div class="h-screen 
+ w-screen">
   <Navbar />
 
- <div class="mt-16 overflow-y-scroll 
-  scroll-smooth max-w-6xl p-2 mx-auto">
+ <div class="mt-16 p-2 
+  max-w-6xl mx-auto">
 
-  <RouterView />
+
+  <router-view v-slot="{ Component, route }">
+   <transition name="fade" mode="out-in">
+    <div :key="route.name">  
+      <component :is="Component"></component>
+    </div>
+   </transition>
+  </router-view>
+
  </div>
 </div>
 </template>
@@ -20,6 +28,8 @@
   const useAuth = useAuthStore()
 
   onMounted(() => useAuth.init())
+
+ 
 </script>
 
 <style>
@@ -27,9 +37,23 @@
 html {
   -webkit-tap-highlight-color: transparent;
   height: 100%;
-  height: -moz-available;          
-  height: -webkit-fill-available;  
-  height: fill-available;
 }
   
+
+ /* route */
+
+ .fade-enter-from {
+   opacity: 0;
+   transform: translateY(50px);
+ }
+ .fade-enter-active {
+   transition: all .2s ease-out;
+ }
+ .fade-leave-to {
+   opacity: 0;
+   transform: translateY(-50px);
+ }
+ .fade-leave-active {
+   transition: all .2s ease-in;
+ }
 </style>

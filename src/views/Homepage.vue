@@ -6,9 +6,10 @@
 
     <button 
      @click="addNote"
-     class="py-3 px-6 rounded-md 
-     bg-indigo-300 text-gray-600 
-     shadow-lg focus:outline-none">
+     class="py-3 px-6 rounded-md bg-indigo-400 
+     text-white shadow-lg focus:outline-none"
+     :class="{ 'cursor-not-allowed':
+     !modelValue.length }">
       Add
     </button>
  </template>
@@ -31,7 +32,8 @@
 
 <div v-if="useNotes.noteLoaded"
  class="grid sm:grid-cols-2 
- lg:grid-cols-3 my-6 gap-4">
+ lg:grid-cols-3 my-6 gap-4 
+ overflow-y-auto">
 
   <Note 
    v-for="note in filterNotes"
@@ -49,7 +51,7 @@
 </template>
 
 <script setup>
-  import { ref, computed } from 'vue'
+  import { ref, onMounted, computed } from 'vue'
   import { useNotesStore } from '@/stores/note'
   import Textarea from '@/components/notes/Textarea.vue'
   import Note from '@/components/notes/Note.vue'
@@ -68,10 +70,18 @@
     }
 
     useNotes.addNote(modelValue.value)
-
     modelValue.value = ''
-    textareaRef.value.focusText()
+
+    if(window.innerWidth >= 1024){
+      textareaRef.value.focusText()
+    }
   }
+
+  onMounted(() => {
+    if(window.innerWidth >= 1024){
+      textareaRef.value.focusText()
+    }
+  })
 
   const showAll = ref(true)
 

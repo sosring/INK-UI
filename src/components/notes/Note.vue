@@ -4,14 +4,18 @@
    class="rounded-md shadow-lg bg-purple-300 
    rounded-md text-gray-600 text-lg p-3">
 
-  <div class="overflow-y-scroll h-32 p-2 relative">
+  <div class="relative">
+  <textarea class="h-32 p-2 resize-none 
+   relative bg-[transparent] w-full
+   focus:outline-none focus:border
+   focus:border-purple-600 relative"
+   :disabled="textDisable"
+   v-model="noteContent"/>
 
     <i class="fas fa-star absolute top-2 right-2 shadow-xl"
      :class="note.fav ? 'text-indigo-600' : 'text-purple-400'"
      @click="addFav">
     </i>
-
-    {{ note.content }}
   </div>
 
   <span class="flexCenter 
@@ -30,21 +34,21 @@
 
     <button class="noteBtn 
      bg-purple-500 text-white"
-     @click="$router.push({ name: 'edit', 
-     params: { id: note.id }})">
-      Edit
+     :class="{ 'bg-teal-500' : !textDisable }"
+     @click="editNote">
+      {{ textDisable ?  'Edit' : 'Save' }}
     </button>
 
     <button class="rounded-md
      text-gray-500 bg-white"
      @click="deleteNote">
-      Delete
+      {{ textDisable ? 'Delete' : 'Cancel' }}
     </button>
   </div>
   
     <DeleteModal 
-     v-if="showModal"
      :id="note.id"
+     v-if="showModal"
      v-model="showModal" />
 
   </div>
@@ -71,12 +75,6 @@
     }
   })
 
-  const showModal = ref(false)
-
-  const deleteNote = () => {
-    showModal.value = true
-  }
-
   const computeWords = computed(() => {
     return props.note.content.split(' ').length <= 1 ? 'Word' : 'Words'
   })
@@ -84,5 +82,29 @@
   const addFav = () => {
     const condition = props.note.fav = !props.note.fav
     useNotes.updateFav(props.note.id, condition)
+  }
+
+  const showModal = ref(false)
+  const textDisable = ref(true)
+
+  const noteContent = ref('')
+  noteContent.value = props.note.content 
+
+  const deleteNote = () => {
+    if(textDisable.value === true){
+      showModal.value = true
+    }
+
+    noteContent.value = props.note.content
+    textDisable.value = true
+  }
+
+  const  editNote = () => {
+    if(textDisable.value === false){ 
+      useNotes.updateChanges(props.note.id, noteContent.value)
+      console.log('save')
+    }
+
+    textDisable.value = !textDisable.value
   }
 </script>

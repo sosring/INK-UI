@@ -12,7 +12,7 @@
      ref="textareaRef"
      :value="modelValue"
      @input="event => $emit('update:modelValue', 
-     event.target.value)" v-focus
+     event.target.value)"
      class="resize-none h-32 w-full p-2 
      focus:outline-none overflow-y-scroll">
 
@@ -26,7 +26,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import { vFocus } from '@/directives/vFocus.js'
 
   const props = defineProps({
     modelValue: {

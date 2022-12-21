@@ -15,6 +15,7 @@
     "pinia": "^2.0.28",
     "tailwindcss": "^3.2.4",
     "vue": "^3.2.45",
+    "vue-lazy-image-loading": "^1.2.1",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

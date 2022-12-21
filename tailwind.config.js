@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "garamond": ["Eb Garamond"],
-        "roboto": ["Roboto"]
+        garamond: ["Eb Garamond"],
+        roboto: ["Roboto"]
       }
     },
   },
