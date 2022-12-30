@@ -1,7 +1,8 @@
 <template>
 
   <div class="h-screen w-screen bg-[#00000056]
-   backdrop-blur-sm fixed top-0 left-0
+   backdrop-blur-sm fixed top-1/2 left-1/2
+   -translate-y-1/2 -translate-x-1/2
    flexCenter justify-center z-10"
    ref="modalRef">
     
@@ -37,6 +38,7 @@
 
       </div>
     </div>
+
   </div>
 </template>
 
@@ -48,7 +50,7 @@
   const useNotes = useNotesStore()
 
   const props = defineProps(['id', 'modelValue'])
-  const emits = defineEmits(['update:modelValue'])
+ const emits = defineEmits(['update:modelValue'])
   const modalRef = ref('') 
 
   const closeModal = () => emits('update:modelValue', false) 

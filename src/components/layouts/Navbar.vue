@@ -3,7 +3,7 @@
 <nav class="navContainer bg-white"
  ref="NavBarRef">
 
-  <div class="innerNav">
+  <div class="innerNav" v-auto-animate>
 
   <div class="flexCenter justify-between space-x-6">
 
@@ -22,7 +22,8 @@
     @click="toggleNav"></i>
   </div>
 
-  <div class="navContent"
+  <div 
+   class="navContent"
    v-if="showNav">
 
     <div class="routerContainer"
@@ -53,6 +54,7 @@
  import { ref } from 'vue'
  import { onClickOutside } from '@vueuse/core'
  import { useAuthStore } from '@/stores/auth'
+ import { vAutoAnimate } from '@formkit/auto-animate'
 
  const useAuth = useAuthStore()
 

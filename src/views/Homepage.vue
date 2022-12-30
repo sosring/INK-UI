@@ -8,14 +8,14 @@
      @click="addNote"
      class="py-3 px-6 rounded-md bg-indigo-400 
      text-white shadow-lg focus:outline-none"
-     :class="{ 'cursor-not-allowed':
+     :class="{ 'cursor-not-allowed bg-gray-600':
      !modelValue.length }">
       Add
     </button>
  </template>
 </Textarea>
 
- <Loading 
+ <Loading v-auto-animate
  :condition="!useNotes.noteLoaded" />
 
 <div v-if="useNotes.noteLoaded"
@@ -30,7 +30,8 @@
 </div>
 
 
-<div v-if="useNotes.noteLoaded"
+<div 
+ v-if="useNotes.noteLoaded"
  class="grid sm:grid-cols-2 
  lg:grid-cols-3 my-6 gap-4 
  overflow-y-auto">
@@ -53,6 +54,7 @@
 <script setup>
   import { ref, onMounted, computed } from 'vue'
   import { useNotesStore } from '@/stores/note'
+  import { vAutoAnimate } from '@formkit/auto-animate'
   import Textarea from '@/components/notes/Textarea.vue'
   import Note from '@/components/notes/Note.vue'
   import Loading from '@/components/layouts/Loading.vue'

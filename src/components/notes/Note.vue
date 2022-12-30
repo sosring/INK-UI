@@ -35,7 +35,7 @@
     <button class="noteBtn 
      bg-purple-500 text-white"
      :class="{ 'bg-teal-500' : !textDisable }"
-     @click="editNote">
+     @click="editNote" ref="saveBtn">
       {{ textDisable ?  'Edit' : 'Save' }}
     </button>
 
@@ -57,7 +57,7 @@
 <script setup>
   import { ref, computed  } from 'vue'
   import { useNotesStore } from '@/stores/note.js'
-  import { useDateFormat, useNow } from '@vueuse/core'
+  import { useDateFormat, useNow, onClickOutside } from '@vueuse/core'
   import DeleteModal from '@/components/notes/Delete.vue' 
 
   const useNotes = useNotesStore()
@@ -85,13 +85,14 @@
   }
 
   const showModal = ref(false)
+
   const textDisable = ref(true)
 
   const noteContent = ref('')
   noteContent.value = props.note.content 
 
   const deleteNote = () => {
-    if(textDisable.value === true){
+    if(textDisable.value){
       showModal.value = true
     }
 
@@ -99,12 +100,15 @@
     textDisable.value = true
   }
 
+  const saveBtn = ref('')
+
   const  editNote = () => {
-    if(textDisable.value === false){ 
+    if(!textDisable.value){ 
       useNotes.updateChanges(props.note.id, noteContent.value)
       console.log('save')
     }
 
     textDisable.value = !textDisable.value
   }
+  onClickOutside(saveBtn, () => textDisable.value = true)
 </script>

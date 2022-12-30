@@ -7,14 +7,14 @@
    <h1 class="brand text-5xl underline">
     Ink UI
    </h1>
-   <p class="text-sm md:text-xl 
+   <p class="text-base md:text-xl 
     font-roboto text-gray-600">
     INk Ui is a real-time data sync note takings web-app
     build with vue js. If you found this project 
     interesting , I hope you would also like some of my 
     other projects if so check out my 
 
-    <a href="https://sosring.github.io/portfolio/"
+    <a href="https://sosring-portfolio.web.app/"
      class="font-bold text-indigo-600">
       porfolio.
     </a>

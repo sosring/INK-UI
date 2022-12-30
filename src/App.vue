@@ -33,27 +33,29 @@
 </script>
 
 <style>
-
+ 
 html {
   -webkit-tap-highlight-color: transparent;
   height: 100%;
 }
   
+ ::-webkit-scrollbar { width: 0; }
+
 
  /* route */
+
+ .fade-enter-active ,
+ .fade-leave-active {
+   transition: all .2s ease-out;
+ }
 
  .fade-enter-from {
    opacity: 0;
    transform: translateY(50px);
  }
- .fade-enter-active {
-   transition: all .2s ease-out;
- }
+
  .fade-leave-to {
    opacity: 0;
    transform: translateY(-50px);
- }
- .fade-leave-active {
-   transition: all .2s ease-in;
  }
 </style>

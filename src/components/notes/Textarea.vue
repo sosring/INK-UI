@@ -1,8 +1,8 @@
 <template>
 
   <div class="p-3 
-  rounded-md shadow-md"
-  :class="bodyBg">
+   rounded-md shadow-md"
+   :class="bodyBg">
     <h1 class="mb-2 
      text-xl text-white">
      {{ title }}
